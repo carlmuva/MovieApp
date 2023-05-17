@@ -1,4 +1,4 @@
-package com.example.movieapp
+package com.example.movieapp.ui.movie
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
