@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.movieapp.core.Resource
 import com.example.movieapp.data.model.Movie
@@ -84,6 +85,18 @@ class MovieFragment : Fragment(), MovieAdapter.OnMovieClickListener {
     }
 
     override fun onMovieClick(movie: Movie) {
-        Log.d("Movie", "onMovieClick: $movie ")
+        val action = MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(
+            movie.poster_path,
+            movie.backdrop_path,
+            movie.vote_average.toFloat(),
+            movie.vote_count,
+            movie.overview,
+            movie.title,
+            movie.original_language,
+            movie.release_date
+        )
+        findNavController().navigate(action)
+
+        //Log.d("Movie", "onMovieClick: $movie ")
     }
 }
